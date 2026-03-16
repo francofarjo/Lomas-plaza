@@ -512,7 +512,11 @@ a {
   width: auto;
   height: auto;
   object-fit: contain;
-  filter: grayscale(0.05) drop-shadow(0 6px 10px rgba(0, 0, 0, 0.18));
+  filter: brightness(0) invert(1) drop-shadow(0 6px 10px rgba(0, 0, 0, 0.18));
+}
+
+.logo-card img.logo-color {
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.18));
 }
 
 .logo-card.is-dark {
@@ -686,6 +690,10 @@ a {
   height: 100%;
   object-fit: contain;
   padding: 18px;
+  filter: brightness(0) invert(1) drop-shadow(0 6px 10px rgba(0, 0, 0, 0.18));
+}
+
+.local-card__image img.logo-color {
   filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.18));
 }
 
@@ -777,6 +785,11 @@ a {
   width: auto;
   height: auto;
   object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.store-hero__logo img.logo-color {
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.18));
 }
 
 .store-details {
@@ -834,6 +847,56 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+}
+
+.store-gallery {
+  margin-top: 28px;
+  overflow: hidden;
+}
+
+.store-gallery__title {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.store-gallery__track {
+  display: flex;
+  width: max-content;
+  gap: 0;
+  animation: gallery-scroll 36s linear infinite;
+}
+
+.store-gallery__group {
+  display: flex;
+  gap: 16px;
+  padding-right: 16px;
+}
+
+.store-gallery__item {
+  width: 220px;
+  height: 140px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #111111;
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.18);
+}
+
+.store-gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.store-gallery__track:hover {
+  animation-play-state: paused;
+}
+
+.store-gallery__track:focus-within {
+  animation-play-state: paused;
 }
 
 .store-aside {
@@ -919,6 +982,15 @@ a {
   width: 18px;
   height: 18px;
   fill: var(--accent);
+}
+
+@keyframes gallery-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .map-section {
@@ -1197,6 +1269,10 @@ a {
     width: 150px;
     height: 150px;
   }
+  .store-gallery__item {
+    width: 180px;
+    height: 120px;
+  }
   .hero__media {
     background-image: linear-gradient(
         130deg,
@@ -1221,6 +1297,11 @@ a {
   }
 
   .logo-marquee__track {
+    animation: none;
+    transform: none;
+  }
+
+  .store-gallery__track {
     animation: none;
     transform: none;
   }

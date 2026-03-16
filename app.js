@@ -29,6 +29,7 @@
     name: "La Costureria",
     category: "Servicios",
     image: "uploads/La-Costureria-1.webp",
+    keepColor: true,
   },
   {
     number: "Local 6",
@@ -62,7 +63,7 @@
   },
   {
     number: "Local 10 A",
-    name: "MSZ Shop Tecnolab",
+    name: "MDZ Shop Tecnolab",
     category: "Varios",
     image: "uploads/MDZ-Shop.webp",
   },
@@ -70,19 +71,22 @@
     number: "Local 11",
     name: "Queen Energia",
     category: "Servicios",
-    image: "uploads/queen-energia.jpg",
+    image: "uploads/queen-energia-white.png",
+    keepColor: true,
   },
   {
     number: "Local 12",
     name: "La Matilde Focacheria",
     category: "Gastronomia",
     image: "uploads/la-matilde-focacheria 2.png",
+    keepColor: true,
   },
   {
     number: "Local 12 A",
     name: "Panco Sushi",
     category: "Gastronomia",
     image: "uploads/Panko-1.webp",
+    keepColor: true,
   },
   {
     number: "Local 13",
@@ -92,7 +96,7 @@
   },
   {
     number: "Local 14",
-    name: "Wine Stop (Full Escabio)",
+    name: "Wine Stop",
     category: "Gastronomia",
     image: "uploads/Fullescabio.webp",
   },
@@ -107,7 +111,8 @@
     number: "Local 16",
     name: "Capri Pizzas",
     category: "Gastronomia",
-    image: "uploads/Capri nuevo.jpg",
+    image: "uploads/capri-logo-white.png",
+    keepColor: true,
   },
   {
     number: "Local 17",
@@ -376,6 +381,9 @@ const renderMarquee = () => {
       img.alt = isGhost ? "" : item.name;
       img.loading = "lazy";
       img.decoding = "async";
+      if (item.keepColor) {
+        img.classList.add("logo-color");
+      }
 
       card.appendChild(img);
       applyLogoTone(img, card);
@@ -437,6 +445,9 @@ const render = () => {
       img.alt = `Logo de ${locale.name}`;
       img.loading = "lazy";
       img.decoding = "async";
+      if (locale.keepColor) {
+        img.classList.add("logo-color");
+      }
       image.appendChild(img);
       applyLogoTone(img, image);
     } else {
