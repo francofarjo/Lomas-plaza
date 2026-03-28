@@ -98,7 +98,7 @@
     number: "Local 14",
     name: "Wine Stop",
     category: "Gastronomia",
-    image: "uploads/Fullescabio.webp",
+    image: "uploads/Fullescabio.png",
   },
   {
     number: "Local 15",
@@ -142,6 +142,8 @@
     number: "Local 21",
     name: "Punto Fix",
     category: "Hogar",
+    image: "uploads/punto fix.png",
+    keepColor: true,
   },
   {
     number: "Local 22 y 23",
@@ -278,10 +280,15 @@ const normalize = (value) =>
     .replace(/\s+/g, " ")
     .trim();
 
+const stripDiacritics = (value) => {
+  if (typeof value.normalize === "function") {
+    return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  }
+  return value;
+};
+
 const slugify = (value) =>
-  value
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
+  stripDiacritics(value)
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
@@ -490,6 +497,10 @@ const render = () => {
 
 const revealOnScroll = () => {
   const items = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window)) {
+    items.forEach((item) => item.classList.add("is-visible"));
+    return;
+  }
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {

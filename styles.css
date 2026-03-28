@@ -31,6 +31,11 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   position: relative;
+  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 .page-noise {
@@ -233,7 +238,7 @@ a {
       rgba(0, 0, 0, 0.35) 45%,
       rgba(0, 0, 0, 0.8) 100%
     ),
-    url("uploads/Hero1-1.webp");
+    url("uploads/img%202.jpeg");
   background-size: cover;
   background-position: center;
   filter: saturate(1.08) contrast(1.04);
@@ -471,14 +476,16 @@ a {
 .logo-marquee {
   position: relative;
   z-index: 2;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 18px;
+  overflow: hidden;
 }
 
 .logo-marquee__track {
-  display: flex;
+  display: inline-flex;
   gap: 0;
-  width: max-content;
+  width: auto;
   animation: logo-scroll 45s linear infinite;
 }
 
@@ -1197,6 +1204,11 @@ a {
   .store-details__grid {
     grid-template-columns: 1fr;
   }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @media (max-width: 640px) {
@@ -1280,7 +1292,7 @@ a {
         rgba(0, 0, 0, 0.35) 45%,
         rgba(0, 0, 0, 0.8) 100%
       ),
-      url("uploads/Hero-Movil.webp");
+      url("uploads/img%202.jpeg");
   }
   .map-card iframe {
     height: 320px;
